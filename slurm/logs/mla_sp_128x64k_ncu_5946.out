@@ -1,0 +1,8 @@
+host=node02 job=5946 gpu=0
+case: s_q=128 s_kv=65536 topk=2048 h_q=128 d_qk=576
+NCU direct mode: warmup=300; no sudo or sudo -E.
+stall_analysis=0
+requested-byte model excludes L2 reuse; compare it with NCU DRAM counters.
+==PROF== Connected to process 504917 (/usr/bin/python3.12)
+==PROF== Disconnected from process 504917
+==ERROR== The application returned an error code (1).

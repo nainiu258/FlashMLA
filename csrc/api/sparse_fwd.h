@@ -105,7 +105,8 @@ static std::vector<at::Tensor> sparse_attn_prefill_interface(
     float sm_scale,
     int d_v,
     const std::optional<at::Tensor> &attn_sink,
-    const std::optional<at::Tensor> &topk_length
+    const std::optional<at::Tensor> &topk_length,
+    const std::optional<at::Tensor> &consumer_barrier_wait_cycles
 ) {
     using bf16 = cutlass::bfloat16_t;
     
@@ -119,6 +120,7 @@ static std::vector<at::Tensor> sparse_attn_prefill_interface(
     KU_CHECK_NDIM(indices, 3);
     KU_CHECK_NDIM(attn_sink, 1);
     KU_CHECK_NDIM(topk_length, 1);
+    KU_CHECK_NDIM(consumer_barrier_wait_cycles, 4);
 
     int s_q = q.size(0);
     int s_kv = kv.size(0);
@@ -136,24 +138,36 @@ static std::vector<at::Tensor> sparse_attn_prefill_interface(
     KU_CHECK_DEVICE(indices);
     KU_CHECK_DEVICE(attn_sink);
     KU_CHECK_DEVICE(topk_length);
+    KU_CHECK_DEVICE(consumer_barrier_wait_cycles);
     
     KU_CHECK_DTYPE(q, torch::kBFloat16);
     KU_CHECK_DTYPE(kv, torch::kBFloat16);
     KU_CHECK_DTYPE(indices, torch::kInt32);
     KU_CHECK_DTYPE(attn_sink, torch::kFloat32);
     KU_CHECK_DTYPE(topk_length, torch::kInt32);
+    KU_CHECK_DTYPE(consumer_barrier_wait_cycles, torch::kInt64);
     
     KU_CHECK_SHAPE(q, s_q, h_q, d_qk);
     KU_CHECK_SHAPE(kv, s_kv, h_kv, d_qk);
     KU_CHECK_SHAPE(indices, s_q, h_kv, topk);
     KU_CHECK_SHAPE(attn_sink, h_q);
     KU_CHECK_SHAPE(topk_length, s_q);
+    if (consumer_barrier_wait_cycles.has_value()) {
+        const int num_ctas = s_q * (h_q / 64);
+        const int num_pairs = topk / 128;
+        KU_CHECK_SHAPE(consumer_barrier_wait_cycles, num_ctas, num_pairs, 4, 4);
+#ifndef FLASH_MLA_PROFILE_CONSUMER_BARRIER_WAIT
+        TORCH_CHECK(false, "consumer_barrier_wait_cycles requires a build with "
+                           "FLASH_MLA_PROFILE_CONSUMER_BARRIER_WAIT=1");
+#endif
+    }
     
     KU_CHECK_LAST_DIM_CONTIGUOUS(q);
     KU_CHECK_LAST_DIM_CONTIGUOUS(kv);
     KU_CHECK_LAST_DIM_CONTIGUOUS(indices);
     KU_CHECK_LAST_DIM_CONTIGUOUS(attn_sink);
     KU_CHECK_LAST_DIM_CONTIGUOUS(topk_length);
+    KU_CHECK_LAST_DIM_CONTIGUOUS(consumer_barrier_wait_cycles);
     
     // Allocate results and buffers
     at::cuda::CUDAGuard device_guard{(char)q.get_device()};
@@ -183,6 +197,7 @@ static std::vector<at::Tensor> sparse_attn_prefill_interface(
         (bf16*)out.data_ptr(),
         (float*)max_logits.data_ptr(),
         (float*)lse.data_ptr(),
+        (unsigned long long*)ku::get_optional_tensor_ptr<int64_t>(consumer_barrier_wait_cycles),
 
         arch.num_sms,
         at::cuda::getCurrentCUDAStream().stream()

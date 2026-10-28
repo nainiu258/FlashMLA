@@ -1,0 +1,49 @@
+W0806 07:55:35.209000 1713191 .venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py:178] No CUDA runtime is found, using CUDA_HOME='/usr/local/cuda-13'
+Traceback (most recent call last):
+  File "/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2893, in _run_ninja_build
+    subprocess.run(
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['ninja', '-v']' returned non-zero exit status 255.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/chenpengfei/FlashMLA/setup.py", line 147, in <module>
+    setup(
+  File "/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/setuptools/__init__.py", line 117, in setup
+    return distutils.core.setup(**attrs)  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/setuptools/_distutils/core.py", line 186, in setup
+    return run_commands(dist)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/setuptools/_distutils/core.py", line 202, in run_commands
+    dist.run_commands()
+  File "/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 1001, in run_commands
+    self.run_command(cmd)
+  File "/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/setuptools/dist.py", line 1107, in run_command
+    super().run_command(command)
+  File "/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 1020, in run_command
+    cmd_obj.run()
+  File "/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/setuptools/command/build_ext.py", line 97, in run
+    _build_ext.run(self)
+  File "/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 367, in run
+    self.build_extensions()
+  File "/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 1289, in build_extensions
+    super().build_extensions()
+  File "/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 483, in build_extensions
+    self._build_extensions_serial()
+  File "/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 509, in _build_extensions_serial
+    self.build_extension(ext)
+  File "/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/setuptools/command/build_ext.py", line 262, in build_extension
+    _build_ext.build_extension(self, ext)
+  File "/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 564, in build_extension
+    objects = self.compiler.compile(
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 1027, in unix_wrap_ninja_compile
+    _write_ninja_file_and_compile_objects(
+  File "/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2475, in _write_ninja_file_and_compile_objects
+    _run_ninja_build(
+  File "/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2910, in _run_ninja_build
+    raise RuntimeError(message) from e
+RuntimeError: Error compiling objects for extension

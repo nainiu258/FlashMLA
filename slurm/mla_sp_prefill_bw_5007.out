@@ -1,0 +1,3 @@
+host=node02 job=5007 gpu=0
+case: s_q=4096 s_kv=32768 topk=2048 h_q=128 d_qk=576
+==ERROR== Unable to write to file mla_sp_prefill_bw_sq4096_skv32768_topk2048_hq128_dqk576_5007.ncu-rep. Please verify this file is not locked, and writable.

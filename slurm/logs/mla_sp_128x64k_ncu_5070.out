@@ -1,0 +1,4 @@
+host=node02 job=5070 gpu=0
+case: s_q=128 s_kv=65536 topk=2048 h_q=128 d_qk=576
+NCU direct mode: warmup=300; no sudo or sudo -E.
+requested-byte model excludes L2 reuse; compare it with NCU DRAM counters.

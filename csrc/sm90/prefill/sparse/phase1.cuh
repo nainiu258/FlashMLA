@@ -104,6 +104,22 @@ __device__ void KernelTemplate<D_QK, HAVE_TOPK_LENGTH>::devfunc(const SparseAttn
         plan.bar_q.wait(0);
 
         bool cur_bar_wait_phase = 0;
+
+#if defined(FLASH_MLA_PROFILE_CONSUMER_BARRIER_WAIT)
+        // Store one sample from lane 0 of every consumer warp.  The store is
+        // deliberately after the timed interval so it does not perturb it.
+        auto timed_consumer_barrier = [&](NamedBarriers barrier, int trace_slot, int block_idx) {
+            unsigned long long begin = clock64();
+            NamedBarrier::arrive_and_wait(256, barrier);
+            unsigned long long elapsed = clock64() - begin;
+            if (idx_in_warpgroup % 32 == 0) {
+                const int num_pairs = params.topk / (2 * B_TOPK);
+                const int warp_in_warpgroup = idx_in_warpgroup / 32;
+                const int offset = (((int)blockIdx.x * num_pairs + block_idx / 2) * 4 + trace_slot) * 4 + warp_in_warpgroup;
+                params.consumer_barrier_wait_cycles[offset] = elapsed;
+            }
+        };
+#endif
         
         struct Warpgroup0 {};
         struct Warpgroup1 {};
@@ -331,7 +347,11 @@ __device__ void KernelTemplate<D_QK, HAVE_TOPK_LENGTH>::devfunc(const SparseAttn
                 plan.bar_k0_free[0].arrive();
 
                 // Wait for new sM, scale rS, save, inform WG1
+#if defined(FLASH_MLA_PROFILE_CONSUMER_BARRIER_WAIT)
+                timed_consumer_barrier(NamedBarriers::wg1_bunch_0_ready, 1, block_idx);
+#else
                 NamedBarrier::arrive_and_wait(256, NamedBarriers::wg1_bunch_0_ready);
+#endif
                 float new_rM[2], scale_factors[2];
                 *(float2*)new_rM = plan.sM[idx_in_warpgroup/4];
                 CUTE_UNROLL
@@ -345,7 +365,11 @@ __device__ void KernelTemplate<D_QK, HAVE_TOPK_LENGTH>::devfunc(const SparseAttn
                 NamedBarrier::arrive(256, NamedBarriers::wg0_s0_ready);
 
                 // Wait for sS1
+#if defined(FLASH_MLA_PROFILE_CONSUMER_BARRIER_WAIT)
+                timed_consumer_barrier(NamedBarriers::wg1_s1_ready, 3, block_idx);
+#else
                 NamedBarrier::arrive_and_wait(256, NamedBarriers::wg1_s1_ready);
+#endif
 
                 // Rescale rO0, Issue rO0 += sS1 @ sV1L
                 rescale_rO(scale_factors);
@@ -407,7 +431,11 @@ __device__ void KernelTemplate<D_QK, HAVE_TOPK_LENGTH>::devfunc(const SparseAttn
 
 
                 // Wait for WG0 (for sM), online softmax, Notify WG0 (sM ready)
+#if defined(FLASH_MLA_PROFILE_CONSUMER_BARRIER_WAIT)
+                timed_consumer_barrier(NamedBarriers::wg0_bunch_0_ready, 0, block_idx);
+#else
                 NamedBarrier::arrive_and_wait(256, NamedBarriers::wg0_bunch_0_ready);
+#endif
                 online_softmax_and_rescale_o(Warpgroup1{});
                 NamedBarrier::arrive(256, NamedBarriers::wg1_bunch_0_ready);
 
@@ -418,7 +446,11 @@ __device__ void KernelTemplate<D_QK, HAVE_TOPK_LENGTH>::devfunc(const SparseAttn
                 
                 // Wait for WG0 (for sS0), Issue rO1 += rS0 @ sV0R
                 save_rS_to_sS(rS, sS1, idx_in_warpgroup);   // Put it here is faster
+#if defined(FLASH_MLA_PROFILE_CONSUMER_BARRIER_WAIT)
+                timed_consumer_barrier(NamedBarriers::wg0_s0_ready, 2, block_idx);
+#else
                 NamedBarrier::arrive_and_wait(256, NamedBarriers::wg0_s0_ready);
+#endif
                 gemm_ss(false, TiledMMA_PV_RemoteP{}, sS0, sV0r, rO, idx_in_warpgroup);
                 warpgroup_commit_batch();
                 

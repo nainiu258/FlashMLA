@@ -1,0 +1,13 @@
+host=node02 job=5480 gpu=0
+using build artifact: flash_mla/cuda.cpython-312-x86_64-linux-gnu.so
+case: s_q=128 s_kv=65536 topk=2048 h_q=128 d_qk=576 warmup=1 trace_only_cta=0
+case: s_q=128 s_kv=65536 topk=2048 h_q=128 d_qk=576 trace_only_cta=0
+events recorded=519 kept=519 dropped=0 (capacity/warpgroup=349525, counts=[519])
+timeline span: 0.140 ms (0.000140 s)
+  role producer: 128 events
+  role wg0: 196 events
+  role wg1: 195 events
+wrote 38247 bytes to slurm/profiles/mla_sp_perfetto_sq128_skv65536_topk2048_hq128_dqk576_cta0_5480.perfetto-trace
+open it at https://ui.perfetto.dev
+Perfetto trace: slurm/profiles/mla_sp_perfetto_sq128_skv65536_topk2048_hq128_dqk576_cta0_5480.perfetto-trace
+Open it at https://ui.perfetto.dev

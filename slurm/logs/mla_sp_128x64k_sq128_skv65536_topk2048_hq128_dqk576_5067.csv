@@ -1,0 +1,13 @@
+==PROF== Connected to process 3067885 (/usr/bin/python3.12)
+==ERROR== ERR_NVGPUCTRPERM - The user does not have permission to access NVIDIA GPU Performance Counters on the target device 0. For instructions on enabling permissions and to get more information see https://developer.nvidia.com/ERR_NVGPUCTRPERM
+Profile case: s_q=128, s_kv=65536, topk=2048, h_q=128, d_qk=576
+Expected request-volume model (GiB; cache misses are not assumed):
+  producer indices=0.002
+  producer KV gather=0.562
+  Q TMA read=0.018
+  epilogue O write=0.016
+  epilogue max/lse write=0.000
+  total requested=0.598
+  Note: QK / softmax / PV are fused and overlap with gather; their separate bandwidth cannot be obtained by dividing total kernel time into additive phases.
+Profiled sparse-prefill launch completed: [(128, 128, 512), (128, 128), (128, 128)]
+==PROF== Disconnected from process 3067885

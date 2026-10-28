@@ -1,0 +1,128 @@
+Node: node02
+CUDA_VISIBLE_DEVICES: 0
+NVIDIA H200, 143771 MiB
+Device: NVIDIA H200, 132 SMs, 150 GB
+[46m8 configs to run[0m
+[1/8] ================
+b=1 h_q=64 s_q=1 s_kv=65536 topk=2048 block_size=64 d_qk=576 (bf16 KV cache)
+  (materialising a contiguous copy of q, shape (1, 1, 64, 576))
+  prefill grid: 1 CTAs on 132 SMs (0.01 waves, no split-KV)
+  Compute/Memory: 114.2 FLOP/B  (0.00 GB per call)
+  (materialising a contiguous copy of q, shape (1, 1, 64, 576))
+  decode(bf16)       19.7 us     14.5 TFLOPS      127 GB/s   [splitkv_mla_fp8_sparse=11.6  mla_combine=11.5]
+  prefill(bf16)      55.7 us      5.1 TFLOPS       45 GB/s   [sparse_attn_fwd=55.7]
+  decode(fp8)        18.5 us     15.4 TFLOPS       80 GB/s   [splitkv_mla_fp8_sparse=10.3  mla_combine=11.6]
+  prefill / decode: 2.83x
+  split-KV: 32 splits for 1 requests (31 extra -> o_accum + combine)
+  correctness: PASS
+[2/8] ================
+b=8 h_q=64 s_q=1 s_kv=65536 topk=2048 block_size=64 d_qk=576 (bf16 KV cache)
+  (materialising a contiguous copy of q, shape (8, 1, 64, 576))
+  (materialising a contiguous copy of indices, shape (8, 1, 2048))
+  prefill grid: 8 CTAs on 132 SMs (0.06 waves, no split-KV)
+  Compute/Memory: 114.2 FLOP/B  (0.02 GB per call)
+  (materialising a contiguous copy of q, shape (8, 1, 64, 576))
+  (materialising a contiguous copy of indices, shape (8, 1, 2048))
+  decode(bf16)       27.9 us     81.9 TFLOPS      717 GB/s   [splitkv_mla_fp8_sparse=23.6  mla_combine=8.1]
+  prefill(bf16)      58.2 us     39.2 TFLOPS      344 GB/s   [sparse_attn_fwd=58.2]
+  decode(fp8)        22.7 us    100.4 TFLOPS      522 GB/s   [splitkv_mla_fp8_sparse=18.6  mla_combine=8.1]
+  prefill / decode: 2.09x
+  split-KV: 88 splits for 8 requests (80 extra -> o_accum + combine)
+  correctness: PASS
+[3/8] ================
+b=32 h_q=64 s_q=1 s_kv=65536 topk=2048 block_size=64 d_qk=576 (bf16 KV cache)
+  (materialising a contiguous copy of q, shape (32, 1, 64, 576))
+  (materialising a contiguous copy of indices, shape (32, 1, 2048))
+  prefill grid: 32 CTAs on 132 SMs (0.24 waves, no split-KV)
+  Compute/Memory: 114.2 FLOP/B  (0.08 GB per call)
+  (materialising a contiguous copy of q, shape (32, 1, 64, 576))
+  (materialising a contiguous copy of indices, shape (32, 1, 2048))
+  decode(bf16)       63.9 us    142.9 TFLOPS     1252 GB/s   [splitkv_mla_fp8_sparse=58.0  mla_combine=9.5]
+  prefill(bf16)      64.8 us    140.8 TFLOPS     1233 GB/s   [sparse_attn_fwd=64.8]
+  decode(fp8)        49.1 us    185.7 TFLOPS      965 GB/s   [splitkv_mla_fp8_sparse=43.1  mla_combine=10.1]
+  prefill / decode: 1.01x
+  split-KV: 128 splits for 32 requests (96 extra -> o_accum + combine)
+  correctness: PASS
+[4/8] ================
+b=128 h_q=64 s_q=1 s_kv=65536 topk=2048 block_size=64 d_qk=576 (bf16 KV cache)
+  (materialising a contiguous copy of q, shape (128, 1, 64, 576))
+  (materialising a contiguous copy of indices, shape (128, 1, 2048))
+  prefill grid: 128 CTAs on 132 SMs (0.97 waves, no split-KV)
+  Compute/Memory: 114.2 FLOP/B  (0.32 GB per call)
+  (materialising a contiguous copy of q, shape (128, 1, 64, 576))
+  (materialising a contiguous copy of indices, shape (128, 1, 2048))
+  decode(bf16)      173.5 us    210.4 TFLOPS     1843 GB/s   [splitkv_mla_fp8_sparse=173.5  mla_combine=2.5]
+  prefill(bf16)      93.3 us    391.3 TFLOPS     3428 GB/s   [sparse_attn_fwd=93.3]
+  decode(fp8)       117.5 us    310.6 TFLOPS     1615 GB/s   [splitkv_mla_fp8_sparse=117.3  mla_combine=2.5]
+  prefill / decode: 0.54x
+  split-KV: 128 splits for 128 requests (0 extra -> o_accum + combine)
+  correctness: PASS
+[5/8] ================
+b=1 h_q=128 s_q=1 s_kv=65536 topk=2048 block_size=64 d_qk=576 (bf16 KV cache)
+  (materialising a contiguous copy of q, shape (1, 1, 128, 576))
+  prefill grid: 2 CTAs on 132 SMs (0.02 waves, no split-KV)
+  Compute/Memory: 216.2 FLOP/B  (0.00 GB per call)
+  (materialising a contiguous copy of q, shape (1, 1, 128, 576))
+  decode(bf16)       20.7 us     27.5 TFLOPS      127 GB/s   [splitkv_mla_fp8_sparse=12.7  mla_combine=12.1]
+  prefill(bf16)      56.0 us     10.2 TFLOPS       47 GB/s   [sparse_attn_fwd=56.0]
+  decode(fp8)        18.5 us     30.8 TFLOPS       88 GB/s   [splitkv_mla_fp8_sparse=10.5  mla_combine=12.1]
+  prefill / decode: 2.70x
+  split-KV: 32 splits for 1 requests (31 extra -> o_accum + combine)
+  correctness: PASS
+[6/8] ================
+b=8 h_q=128 s_q=1 s_kv=65536 topk=2048 block_size=64 d_qk=576 (bf16 KV cache)
+  (materialising a contiguous copy of q, shape (8, 1, 128, 576))
+  (materialising a contiguous copy of indices, shape (8, 1, 2048))
+  prefill grid: 16 CTAs on 132 SMs (0.12 waves, no split-KV)
+  Compute/Memory: 216.2 FLOP/B  (0.02 GB per call)
+  (materialising a contiguous copy of q, shape (8, 1, 128, 576))
+  (materialising a contiguous copy of indices, shape (8, 1, 2048))
+  decode(bf16)       38.7 us    117.9 TFLOPS      545 GB/s   [splitkv_mla_fp8_sparse=33.9  mla_combine=8.7]
+  prefill(bf16)      58.4 us     78.2 TFLOPS      362 GB/s   [sparse_attn_fwd=58.4]
+  decode(fp8)        27.4 us    166.5 TFLOPS      473 GB/s   [splitkv_mla_fp8_sparse=22.4  mla_combine=9.2]
+  prefill / decode: 1.51x
+  split-KV: 56 splits for 8 requests (48 extra -> o_accum + combine)
+  correctness: PASS
+[7/8] ================
+b=32 h_q=128 s_q=1 s_kv=65536 topk=2048 block_size=64 d_qk=576 (bf16 KV cache)
+  (materialising a contiguous copy of q, shape (32, 1, 128, 576))
+  (materialising a contiguous copy of indices, shape (32, 1, 2048))
+  prefill grid: 64 CTAs on 132 SMs (0.48 waves, no split-KV)
+  Compute/Memory: 216.2 FLOP/B  (0.08 GB per call)
+  (materialising a contiguous copy of q, shape (32, 1, 128, 576))
+  (materialising a contiguous copy of indices, shape (32, 1, 2048))
+  decode(bf16)      105.2 us    173.5 TFLOPS      802 GB/s   [splitkv_mla_fp8_sparse=100.9  mla_combine=8.1]
+  prefill(bf16)      65.7 us    277.9 TFLOPS     1285 GB/s   [sparse_attn_fwd=65.7]
+  decode(fp8)        63.7 us    286.4 TFLOPS      814 GB/s   [splitkv_mla_fp8_sparse=59.3  mla_combine=8.1]
+  prefill / decode: 0.62x
+  split-KV: 64 splits for 32 requests (32 extra -> o_accum + combine)
+  correctness: PASS
+[8/8] ================
+b=128 h_q=128 s_q=1 s_kv=65536 topk=2048 block_size=64 d_qk=576 (bf16 KV cache)
+  (materialising a contiguous copy of q, shape (128, 1, 128, 576))
+  (materialising a contiguous copy of indices, shape (128, 1, 2048))
+  prefill grid: 256 CTAs on 132 SMs (1.94 waves, no split-KV)
+  Compute/Memory: 216.2 FLOP/B  (0.34 GB per call)
+  (materialising a contiguous copy of q, shape (128, 1, 128, 576))
+  (materialising a contiguous copy of indices, shape (128, 1, 2048))
+  decode(bf16)      334.0 us    218.6 TFLOPS     1011 GB/s   [splitkv_mla_fp8_sparse=333.4  mla_combine=3.1]
+  prefill(bf16)     139.9 us    521.7 TFLOPS     2413 GB/s   [sparse_attn_fwd=139.9]
+  decode(fp8)       185.0 us    394.8 TFLOPS     1123 GB/s   [splitkv_mla_fp8_sparse=184.2  mla_combine=3.2]
+  prefill / decode: 0.42x
+  split-KV: 128 splits for 128 requests (0 extra -> o_accum + combine)
+  correctness: PASS
+┏━━━━━┳━━━━━┳━━━━┳━━━━━━━┳━━━━━━┳━━━━━┳━━━━━━┳━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━┓
+┃     ┃     ┃    ┃       ┃      ┃     ┃      ┃        ┃ decode  ┃         ┃         ┃ decode  ┃ prefill ┃ prefill  ┃         ┃         ┃   ┃
+┃ h_q ┃ Bsz ┃ sq ┃ sk    ┃ topk ┃ C/M ┃ CTAs ┃ splits ┃ us      ┃ splitkv ┃ combine ┃ GB/s    ┃ us      ┃ GB/s     ┃ fp8 us  ┃ pre/dec ┃   ┃
+┡━━━━━╇━━━━━╇━━━━╇━━━━━━━╇━━━━━━╇━━━━━╇━━━━━━╇━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━┩
+│ 64  │ 1   │ 1  │ 65536 │ 2048 │ 114 │ 1    │ 32     │    19.7 │    11.6 │   11.5  │   127   │    55.7 │    45    │    18.5 │ 2.83x   │   │
+│ 64  │ 8   │ 1  │ 65536 │ 2048 │ 114 │ 8    │ 88     │    27.9 │    23.6 │    8.1  │   717   │    58.2 │   344    │    22.7 │ 2.09x   │   │
+│ 64  │ 32  │ 1  │ 65536 │ 2048 │ 114 │ 32   │ 128    │    63.9 │    58.0 │    9.5  │  1252   │    64.8 │  1233    │    49.1 │ 1.01x   │   │
+│ 64  │ 128 │ 1  │ 65536 │ 2048 │ 114 │ 128  │ 128    │   173.5 │   173.5 │    2.5  │  1843   │    93.3 │  3428    │   117.5 │ 0.54x   │   │
+│ 128 │ 1   │ 1  │ 65536 │ 2048 │ 216 │ 2    │ 32     │    20.7 │    12.7 │   12.1  │   127   │    56.0 │    47    │    18.5 │ 2.70x   │   │
+│ 128 │ 8   │ 1  │ 65536 │ 2048 │ 216 │ 16   │ 56     │    38.7 │    33.9 │    8.7  │   545   │    58.4 │   362    │    27.4 │ 1.51x   │   │
+│ 128 │ 32  │ 1  │ 65536 │ 2048 │ 216 │ 64   │ 64     │   105.2 │   100.9 │    8.1  │   802   │    65.7 │  1285    │    63.7 │ 0.62x   │   │
+│ 128 │ 128 │ 1  │ 65536 │ 2048 │ 216 │ 256  │ 128    │   334.0 │   333.4 │    3.1  │  1011   │   139.9 │  2413    │   185.0 │ 0.42x   │   │
+└─────┴─────┴────┴───────┴──────┴─────┴──────┴────────┴─────────┴─────────┴─────────┴─────────┴─────────┴──────────┴─────────┴─────────┴───┘
+[42m8/8 configs correct[0m
+Done.

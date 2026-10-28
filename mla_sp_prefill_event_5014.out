@@ -1,0 +1,20 @@
+host=node02 job=5014 gpu=0
+case: s_q=4096 s_kv=32768 topk=2048 h_q=128 d_qk=576 warmup=10 iters=50
+Profile case: s_q=4096, s_kv=32768, topk=2048, h_q=128, d_qk=576
+Expected request-volume model (GiB; cache misses are not assumed):
+  producer indices=0.062
+  producer KV gather=18.000
+  Q TMA read=0.562
+  epilogue O write=0.500
+  epilogue max/lse write=0.004
+  total requested=19.129
+  Note: QK / softmax / PV are fused and overlap with gather; their separate bandwidth cannot be obtained by dividing total kernel time into additive phases.
+CUDA-event mean kernel time: 4.470 ms (50 launches)
+Effective request bandwidth (stage bytes / whole fused-kernel time):
+  producer indices: 15.01 GB/s
+  producer KV gather: 4323.86 GB/s
+  Q TMA read: 135.12 GB/s
+  epilogue O write: 120.11 GB/s
+  epilogue max/lse write: 0.94 GB/s
+  total requested: 4595.04 GB/s
+  These rates overlap in time; do not sum them or interpret them as independent DRAM/L2 bandwidth measurements.

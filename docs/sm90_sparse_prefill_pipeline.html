@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SM90 Sparse Prefill — Producer / Consumer 流水</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #141b31;
+      --grid: #2c3653;
+      --text: #e8eefc;
+      --muted: #aebbd8;
+      --wg0: #4779e7;
+      --wg1: #a65ee8;
+      --producer: #19a883;
+      --wait: #e7a62a;
+      --barrier: #f37777;
+      --smem: #30bced;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: radial-gradient(circle at top right, #1a2850 0, var(--bg) 42rem);
+      font: 15px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    main { max-width: 1420px; margin: 0 auto; padding: 36px 24px 56px; }
+    h1 { margin: 0 0 8px; font-size: clamp(25px, 4vw, 40px); letter-spacing: -.03em; }
+    h2 { margin: 0 0 10px; font-size: 18px; }
+    p { margin: 8px 0; color: var(--muted); }
+    .lede { max-width: 920px; font-size: 17px; }
+    .chips { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0 26px; }
+    .chip { border: 1px solid var(--grid); border-radius: 999px; padding: 5px 11px; color: var(--muted); }
+    .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
+    .diagram-wrap { overflow-x: auto; border: 1px solid var(--grid); border-radius: 16px; background: rgba(20, 27, 49, .82); }
+    svg { display: block; min-width: 1120px; width: 100%; height: auto; }
+    .lane { fill: #11182b; stroke: var(--grid); }
+    .grid { stroke: var(--grid); stroke-width: 1; stroke-dasharray: 3 5; }
+    .axis { fill: var(--muted); font-size: 13px; }
+    .label { fill: var(--text); font-weight: 700; font-size: 16px; }
+    .sub { fill: var(--muted); font-size: 12px; }
+    .task { stroke: rgba(255,255,255,.22); stroke-width: 1; rx: 8; }
+    .task-text { fill: white; font-weight: 700; font-size: 13px; text-anchor: middle; dominant-baseline: middle; }
+    .small { fill: white; font-size: 11px; text-anchor: middle; dominant-baseline: middle; }
+    .arrow { stroke: var(--barrier); stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    .note-line { stroke: #92a4cb; stroke-width: 1.5; fill: none; stroke-dasharray: 4 4; }
+    .barrier { fill: var(--barrier); }
+    .callout { fill: #1d2948; stroke: #52658d; }
+    .callout-text { fill: #d7e1fb; font-size: 12px; }
+    code { color: #b7d4ff; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+    .card { background: rgba(20,27,49,.82); border: 1px solid var(--grid); border-radius: 12px; padding: 16px; }
+    .card h2 { font-size: 16px; }
+    ol { margin: 7px 0 0; padding-left: 21px; color: var(--muted); }
+    li + li { margin-top: 6px; }
+    .foot { margin-top: 18px; font-size: 13px; }
+    @media (max-width: 760px) { main { padding: 24px 14px 38px; } .cards { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>SM90 Sparse Prefill：三 Warpgroup 流水</h1>
+    <p class="lede">每个 CTA 有 3 个 warpgroup：WG0、WG1 计算 attention；WG2 依据 <code>indices</code> 异步 gather 两个 64-token 的 KV block。图中展示一对 block（KV0/KV1）以及下一对 block 的预取如何与当前计算重叠。</p>
+    <div class="chips">
+      <span class="chip"><i class="dot" style="background:var(--wg0)"></i>WG0：P0 / O 左半</span>
+      <span class="chip"><i class="dot" style="background:var(--wg1)"></i>WG1：P1 / O 右半</span>
+      <span class="chip"><i class="dot" style="background:var(--producer)"></i>WG2：稀疏 gather producer</span>
+      <span class="chip"><i class="dot" style="background:var(--barrier)"></i>ready / free barrier</span>
+    </div>
+
+    <section class="diagram-wrap" aria-label="SM90 sparse prefill timeline">
+      <svg viewBox="0 0 1320 700" role="img" aria-labelledby="title desc">
+        <title id="title">SM90 sparse prefill producer consumer pipeline</title>
+        <desc id="desc">第三个 warpgroup 根据 topk indices 异步搬运 KV，前两个 warpgroup 分别处理两个 token block，并通过 ready 和 free barrier 实现流水。</desc>
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#f37777"/></marker>
+        </defs>
+
+        <!-- Time axis and lanes -->
+        <text x="250" y="38" class="axis">时间 →</text>
+        <g class="axis" text-anchor="middle">
+          <text x="345" y="64">① 索引 / 预取</text><text x="495" y="64">② KV0L</text>
+          <text x="645" y="64">③ KV1R</text><text x="795" y="64">④ KV0R</text>
+          <text x="945" y="64">⑤ KV1L</text><text x="1095" y="64">⑥ 计算与复用</text>
+        </g>
+        <g class="grid">
+          <path d="M420 78V540 M570 78V540 M720 78V540 M870 78V540 M1020 78V540 M1170 78V540"/>
+        </g>
+        <rect class="lane" x="210" y="88" width="1050" height="126" rx="10"/>
+        <rect class="lane" x="210" y="230" width="1050" height="126" rx="10"/>
+        <rect class="lane" x="210" y="372" width="1050" height="168" rx="10"/>
+        <text x="28" y="140" class="label">WG0</text><text x="28" y="160" class="sub">consumer</text>
+        <text x="28" y="282" class="label">WG1</text><text x="28" y="302" class="sub">consumer</text>
+        <text x="28" y="438" class="label">WG2</text><text x="28" y="458" class="sub">producer</text>
+        <text x="210" y="82" class="sub">QK / online softmax / PV</text>
+        <text x="210" y="366" class="sub">indices → global KV gather → shared memory</text>
+
+        <!-- WG0 -->
+        <rect class="task" x="440" y="116" width="175" height="39" fill="#4779e7"/>
+        <text class="task-text" x="527" y="135">wait k0[0] · QK P0-L</text>
+        <rect class="task" x="710" y="116" width="150" height="39" fill="#4779e7"/>
+        <text class="task-text" x="785" y="135">wait k0[1] · QK P0-R</text>
+        <rect class="task" x="875" y="116" width="160" height="39" fill="#4779e7"/>
+        <text class="task-text" x="955" y="135">mask + softmax P0</text>
+        <rect class="task" x="1038" y="116" width="185" height="39" fill="#4779e7"/>
+        <text class="task-text" x="1130" y="135">P0 × V0L · free k0[0]</text>
+        <rect class="task" x="1050" y="165" width="173" height="30" fill="#3158ac"/>
+        <text class="small" x="1136" y="180">P1 × V1L（跨 WG）</text>
+
+        <!-- WG1 -->
+        <rect class="task" x="590" y="258" width="180" height="39" fill="#a65ee8"/>
+        <text class="task-text" x="680" y="277">wait k1[1] · QK P1-R</text>
+        <rect class="task" x="875" y="258" width="150" height="39" fill="#a65ee8"/>
+        <text class="task-text" x="950" y="277">wait k1[0] · QK P1-L</text>
+        <rect class="task" x="1038" y="258" width="185" height="39" fill="#a65ee8"/>
+        <text class="task-text" x="1130" y="277">softmax P1 · P1 × V1R</text>
+        <rect class="task" x="1038" y="307" width="185" height="30" fill="#7942ad"/>
+        <text class="small" x="1130" y="322">P0 × V0R · free buffers</text>
+
+        <!-- WG2 -->
+        <rect class="task" x="250" y="408" width="150" height="44" fill="#19a883"/>
+        <text class="task-text" x="325" y="424">读 indices</text><text class="small" x="325" y="441">KV0 / KV1，各 64 token</text>
+        <rect class="task" x="425" y="408" width="130" height="44" fill="#19a883"/>
+        <text class="task-text" x="490" y="424">cp.async KV0L</text><text class="small" x="490" y="441">→ k0_ready[0]</text>
+        <rect class="task" x="575" y="408" width="130" height="44" fill="#19a883"/>
+        <text class="task-text" x="640" y="424">cp.async KV1R</text><text class="small" x="640" y="441">→ k1_ready[1]</text>
+        <rect class="task" x="725" y="408" width="130" height="44" fill="#19a883"/>
+        <text class="task-text" x="790" y="424">cp.async KV0R</text><text class="small" x="790" y="441">→ k0_ready[1]</text>
+        <rect class="task" x="875" y="408" width="130" height="44" fill="#19a883"/>
+        <text class="task-text" x="940" y="424">cp.async KV1L</text><text class="small" x="940" y="441">→ k1_ready[0]</text>
+        <rect class="task" x="1040" y="408" width="183" height="44" fill="#147a61"/>
+        <text class="task-text" x="1131" y="424">wait free → 下一对 KV</text><text class="small" x="1131" y="441">与当前 PV/QK 重叠</text>
+
+        <!-- Validity mask -->
+        <rect class="task" x="430" y="475" width="320" height="34" fill="#217596"/>
+        <text class="task-text" x="590" y="492">valid[t] = 0 ≤ indices[t] &lt; s_kv 且 t &lt; topk_length</text>
+        <rect class="task" x="770" y="475" width="246" height="34" fill="#217596"/>
+        <text class="task-text" x="893" y="492">写 is_kv_valid[2][64]</text>
+        <path class="note-line" d="M893 509V555H955"/>
+
+        <!-- Barrier arrows -->
+        <path class="arrow" d="M490 407V175H440"/>
+        <path class="arrow" d="M640 407V317H590"/>
+        <path class="arrow" d="M790 407V175H710"/>
+        <path class="arrow" d="M940 407V317H875"/>
+        <circle class="barrier" cx="430" cy="175" r="5"/><circle class="barrier" cx="580" cy="317" r="5"/>
+        <circle class="barrier" cx="700" cy="175" r="5"/><circle class="barrier" cx="865" cy="317" r="5"/>
+        <path class="arrow" d="M1130 155V387H1070"/>
+        <path class="arrow" d="M1140 337V387H1160"/>
+        <text x="1005" y="382" class="sub" fill="#f9a0a0">free：消费者释放 shared-memory 槽位</text>
+
+        <!-- Bottom callouts -->
+        <rect class="callout" x="210" y="572" width="322" height="88" rx="10"/>
+        <text x="228" y="596" class="callout-text">① 不规则只发生在 token 维</text>
+        <text x="228" y="618" class="callout-text">每个选中的 token 仍以连续 64 维 tile 读取；</text>
+        <text x="228" y="638" class="callout-text">然后重排为 WGMMA 需要的 shared-memory layout。</text>
+        <rect class="callout" x="550" y="572" width="322" height="88" rx="10"/>
+        <text x="568" y="596" class="callout-text">② 无效 index 不会污染结果</text>
+        <text x="568" y="618" class="callout-text">copy 使用 predicate 禁止访问，消费者在 softmax 前</text>
+        <text x="568" y="638" class="callout-text">将对应 logit 设为 −∞。</text>
+        <rect class="callout" x="890" y="572" width="370" height="88" rx="10"/>
+        <text x="908" y="596" class="callout-text">③ 性能关键：不是纯并行，而是复用即预取</text>
+        <text x="908" y="618" class="callout-text">WG0/WG1 用完一半 V 后发 free；WG2 不必等整轮</text>
+        <text x="908" y="638" class="callout-text">attention 完成，就能为下一对 TopK block 装数据。</text>
+      </svg>
+    </section>
+
+    <div class="cards">
+      <section class="card">
+        <h2>Producer 做什么？</h2>
+        <ol><li>读取 64 个 token 的稀疏 index。</li><li>检测 <code>-1</code>、越界与 <code>topk_length</code> 尾部。</li><li>将 KV 分段异步放入两个 shared-memory buffer。</li></ol>
+      </section>
+      <section class="card">
+        <h2>消费者何时开始？</h2>
+        <ol><li>只等待自己当前所需半段的 <code>ready</code>。</li><li>QK、online softmax 和 PV 交错执行。</li><li>用完的半段立即发送 <code>free</code>。</li></ol>
+      </section>
+      <section class="card">
+        <h2>为什么适合 sparse？</h2>
+        <ol><li>随机 token 地址由 producer 隔离。</li><li>consumer 始终面对规整的 SMEM tile。</li><li>随机访问延迟被 Tensor Core 计算掩盖。</li></ol>
+      </section>
+    </div>
+    <p class="foot">对应源码：<code>csrc/sm90/prefill/sparse/phase1.cuh</code> 中 producer 位于约 463–557 行；消费者的 ready/free 使用位于约 259–438 行。</p>
+  </main>
+</body>
+</html>

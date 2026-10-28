@@ -1,0 +1,11 @@
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/utils/_device.py:122: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/python_variable_indexing.cpp:349.)
+  return func(*args, **kwargs)
+Traceback (most recent call last):
+  File "/home/chenpengfei/FlashMLA/tests/bench_sm90_sparse_prefill_dsmem.py", line 92, in <module>
+    main()
+  File "/home/chenpengfei/FlashMLA/tests/bench_sm90_sparse_prefill_dsmem.py", line 73, in main
+    dsmem_pipe()
+  File "/home/chenpengfei/FlashMLA/tests/bench_sm90_sparse_prefill_dsmem.py", line 64, in dsmem_pipe
+    return flash_mla.flash_mla_sparse_fwd_dsmem_crossover_pipelined(t.q, t.kv, t.indices, t.sm_scale)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'flash_mla' has no attribute 'flash_mla_sparse_fwd_dsmem_crossover_pipelined'

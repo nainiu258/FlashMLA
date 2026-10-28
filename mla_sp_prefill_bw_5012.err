@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/home/chenpengfei/FlashMLA/tests/profile_sm90_sparse_prefill.py", line 91, in <module>
+    main()
+  File "/home/chenpengfei/FlashMLA/tests/profile_sm90_sparse_prefill.py", line 73, in main
+    testcase = lib.generate_testcase(params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chenpengfei/FlashMLA/tests/lib.py", line 125, in generate_testcase
+    kk.set_random_seed(t.seed)
+  File "/home/chenpengfei/FlashMLA/tests/kernelkit/utils.py", line 39, in set_random_seed
+    np.random.seed(seed)
+  File "numpy/random/mtrand.pyx", line 4833, in numpy.random.mtrand.seed
+  File "numpy/random/mtrand.pyx", line 255, in numpy.random.mtrand.RandomState.seed
+  File "numpy/random/mtrand.pyx", line 256, in numpy.random.mtrand.RandomState.seed
+  File "numpy/random/_mt19937.pyx", line 168, in numpy.random._mt19937.MT19937._legacy_seeding
+  File "numpy/random/_mt19937.pyx", line 182, in numpy.random._mt19937.MT19937._legacy_seeding
+ValueError: Seed must be between 0 and 2**32 - 1

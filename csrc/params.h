@@ -162,6 +162,8 @@ struct SparseAttnFwdParams {
     cutlass::bfloat16_t* __restrict__ out;   // [s_q, h_q, d_v]
     float* __restrict__ max_logits; // [s_q, h_q]
     float* __restrict__ lse; // [s_q, h_q]
+    // Optional profiling output: [num_ctas, topk / 128, 4, 4].
+    unsigned long long* __restrict__ consumer_barrier_wait_cycles;
 
     int num_sm;
     cudaStream_t stream;

@@ -1,0 +1,278 @@
+W0909 08:57:05.669000 500362 .venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py:781] Attempted to use ninja as the BuildExtension backend but we could not find ninja.. Falling back to using the slow distutils backend.
+ptxas info    : 51 bytes gmem
+ptxas info    : Compiling entry function '_ZN5sm1006decode6head6439flash_fwd_splitkv_mla_fp8_sparse_kernelINS1_14KernelTemplateIL9ModelType1EEENS5_9TmaParamsIN4cute5tupleIJiiiiEEENS7_9TiledCopyINS7_9Copy_AtomIJNS7_11Copy_TraitsINS7_13SM90_TMA_LOADEJNS7_1CILi65536EEENS7_12AuxTmaParamsINS8_IJNS7_11ScaledBasisINSE_ILi1EEEJLi1EEEENSH_ISI_JLi0EEEENSH_ISI_JLi2EEEENSH_ISI_JLi3EEEEEEERKNS7_6LayoutINS8_IJNSE_ILi64EEESP_SI_SI_EEESN_EERKNS7_7SwizzleILi3ELi4ELi3EEEEEEEEN7cutlass10bfloat16_tEEEENSO_INS8_IJSI_NS8_IJNS8_IJNS8_IJSP_SP_EEENSE_ILi8EEEEEEEEEEEENS8_IJNSE_ILi0EEENS8_IJNS8_IJNS8_IJSP_SI_EEENSE_ILi4096EEEEEEEEEEEEEENS8_IJSP_NSE_ILi512EEEEEEEES9_NSA_INSB_IJNSC_INS7_14SM90_TMA_STOREEJSF_SY_EEES11_EEENSO_INS8_IJSI_NS8_IJNS8_IJS13_SI_EEEEEEEEENS8_IJS18_NS8_IJNS8_IJS19_S18_EEEEEEEEEEES13_EEEEEEv22SparseAttnDecodeParamsT0_' for 'sm_90a'
+ptxas info    : Function properties for _ZN5sm1006decode6head6439flash_fwd_splitkv_mla_fp8_sparse_kernelINS1_14KernelTemplateIL9ModelType1EEENS5_9TmaParamsIN4cute5tupleIJiiiiEEENS7_9TiledCopyINS7_9Copy_AtomIJNS7_11Copy_TraitsINS7_13SM90_TMA_LOADEJNS7_1CILi65536EEENS7_12AuxTmaParamsINS8_IJNS7_11ScaledBasisINSE_ILi1EEEJLi1EEEENSH_ISI_JLi0EEEENSH_ISI_JLi2EEEENSH_ISI_JLi3EEEEEEERKNS7_6LayoutINS8_IJNSE_ILi64EEESP_SI_SI_EEESN_EERKNS7_7SwizzleILi3ELi4ELi3EEEEEEEEN7cutlass10bfloat16_tEEEENSO_INS8_IJSI_NS8_IJNS8_IJNS8_IJSP_SP_EEENSE_ILi8EEEEEEEEEEEENS8_IJNSE_ILi0EEENS8_IJNS8_IJNS8_IJSP_SI_EEENSE_ILi4096EEEEEEEEEEEEEENS8_IJSP_NSE_ILi512EEEEEEEES9_NSA_INSB_IJNSC_INS7_14SM90_TMA_STOREEJSF_SY_EEES11_EEENSO_INS8_IJSI_NS8_IJNS8_IJS13_SI_EEEEEEEEENS8_IJS18_NS8_IJNS8_IJS19_S18_EEEEEEEEEEES13_EEEEEEv22SparseAttnDecodeParamsT0_
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 24 registers, used 0 barriers
+ptxas info    : Compile time = 2.970 ms
+ptxas info    : 11 bytes gmem
+ptxas info    : Compiling entry function '_ZN5sm1006decode6head6439flash_fwd_splitkv_mla_fp8_sparse_kernelINS1_14KernelTemplateIL9ModelType1EEENS5_9TmaParamsIN4cute5tupleIJiiiiEEENS7_9TiledCopyINS7_9Copy_AtomIJNS7_11Copy_TraitsINS7_13SM90_TMA_LOADEJNS7_1CILi65536EEENS7_12AuxTmaParamsINS8_IJNS7_11ScaledBasisINSE_ILi1EEEJLi1EEEENSH_ISI_JLi0EEEENSH_ISI_JLi2EEEENSH_ISI_JLi3EEEEEEERKNS7_6LayoutINS8_IJNSE_ILi64EEESP_SI_SI_EEESN_EERKNS7_7SwizzleILi3ELi4ELi3EEEEEEEEN7cutlass10bfloat16_tEEEENSO_INS8_IJSI_NS8_IJNS8_IJNS8_IJSP_SP_EEENSE_ILi8EEEEEEEEEEEENS8_IJNSE_ILi0EEENS8_IJNS8_IJNS8_IJSP_SI_EEENSE_ILi4096EEEEEEEEEEEEEENS8_IJSP_NSE_ILi512EEEEEEEES9_NSA_INSB_IJNSC_INS7_14SM90_TMA_STOREEJSF_SY_EEES11_EEENSO_INS8_IJSI_NS8_IJNS8_IJS13_SI_EEEEEEEEENS8_IJS18_NS8_IJNS8_IJS19_S18_EEEEEEEEEEES13_EEEEEEv22SparseAttnDecodeParamsT0_' for 'sm_100f'
+ptxas info    : Function properties for _ZN5sm1006decode6head6439flash_fwd_splitkv_mla_fp8_sparse_kernelINS1_14KernelTemplateIL9ModelType1EEENS5_9TmaParamsIN4cute5tupleIJiiiiEEENS7_9TiledCopyINS7_9Copy_AtomIJNS7_11Copy_TraitsINS7_13SM90_TMA_LOADEJNS7_1CILi65536EEENS7_12AuxTmaParamsINS8_IJNS7_11ScaledBasisINSE_ILi1EEEJLi1EEEENSH_ISI_JLi0EEEENSH_ISI_JLi2EEEENSH_ISI_JLi3EEEEEEERKNS7_6LayoutINS8_IJNSE_ILi64EEESP_SI_SI_EEESN_EERKNS7_7SwizzleILi3ELi4ELi3EEEEEEEEN7cutlass10bfloat16_tEEEENSO_INS8_IJSI_NS8_IJNS8_IJNS8_IJSP_SP_EEENSE_ILi8EEEEEEEEEEEENS8_IJNSE_ILi0EEENS8_IJNS8_IJNS8_IJSP_SI_EEENSE_ILi4096EEEEEEEEEEEEEENS8_IJSP_NSE_ILi512EEEEEEEES9_NSA_INSB_IJNSC_INS7_14SM90_TMA_STOREEJSF_SY_EEES11_EEENSO_INS8_IJSI_NS8_IJNS8_IJS13_SI_EEEEEEEEENS8_IJS18_NS8_IJNS8_IJS19_S18_EEEEEEEEEEES13_EEEEEEv22SparseAttnDecodeParamsT0_
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 168 registers, used 16 barriers
+ptxas info    : Compile time = 380.116 ms
+ptxas info    : 51 bytes gmem
+ptxas info    : Compiling entry function '_ZN5sm1006decode6head6439flash_fwd_splitkv_mla_fp8_sparse_kernelINS1_14KernelTemplateIL9ModelType0EEENS5_9TmaParamsIN4cute5tupleIJiiiiEEENS7_9TiledCopyINS7_9Copy_AtomIJNS7_11Copy_TraitsINS7_13SM90_TMA_LOADEJNS7_1CILi65536EEENS7_12AuxTmaParamsINS8_IJNS7_11ScaledBasisINSE_ILi1EEEJLi1EEEENSH_ISI_JLi0EEEENSH_ISI_JLi2EEEENSH_ISI_JLi3EEEEEEERKNS7_6LayoutINS8_IJNSE_ILi64EEESP_SI_SI_EEESN_EERKNS7_7SwizzleILi3ELi4ELi3EEEEEEEEN7cutlass10bfloat16_tEEEENSO_INS8_IJSI_NS8_IJNS8_IJNS8_IJSP_SP_EEENSE_ILi8EEEEEEEEEEEENS8_IJNSE_ILi0EEENS8_IJNS8_IJNS8_IJSP_SI_EEENSE_ILi4096EEEEEEEEEEEEEENS8_IJSP_NSE_ILi512EEEEEEEES9_NSA_INSB_IJNSC_INS7_14SM90_TMA_STOREEJSF_SY_EEES11_EEENSO_INS8_IJSI_NS8_IJNS8_IJS13_SI_EEEEEEEEENS8_IJS18_NS8_IJNS8_IJS19_S18_EEEEEEEEEEES13_EEEEEEv22SparseAttnDecodeParamsT0_' for 'sm_90a'
+ptxas info    : Function properties for _ZN5sm1006decode6head6439flash_fwd_splitkv_mla_fp8_sparse_kernelINS1_14KernelTemplateIL9ModelType0EEENS5_9TmaParamsIN4cute5tupleIJiiiiEEENS7_9TiledCopyINS7_9Copy_AtomIJNS7_11Copy_TraitsINS7_13SM90_TMA_LOADEJNS7_1CILi65536EEENS7_12AuxTmaParamsINS8_IJNS7_11ScaledBasisINSE_ILi1EEEJLi1EEEENSH_ISI_JLi0EEEENSH_ISI_JLi2EEEENSH_ISI_JLi3EEEEEEERKNS7_6LayoutINS8_IJNSE_ILi64EEESP_SI_SI_EEESN_EERKNS7_7SwizzleILi3ELi4ELi3EEEEEEEEN7cutlass10bfloat16_tEEEENSO_INS8_IJSI_NS8_IJNS8_IJNS8_IJSP_SP_EEENSE_ILi8EEEEEEEEEEEENS8_IJNSE_ILi0EEENS8_IJNS8_IJNS8_IJSP_SI_EEENSE_ILi4096EEEEEEEEEEEEEENS8_IJSP_NSE_ILi512EEEEEEEES9_NSA_INSB_IJNSC_INS7_14SM90_TMA_STOREEJSF_SY_EEES11_EEENSO_INS8_IJSI_NS8_IJNS8_IJS13_SI_EEEEEEEEENS8_IJS18_NS8_IJNS8_IJS19_S18_EEEEEEEEEEES13_EEEEEEv22SparseAttnDecodeParamsT0_
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 24 registers, used 0 barriers
+ptxas info    : Compile time = 2.975 ms
+ptxas info    : 11 bytes gmem
+ptxas info    : Compiling entry function '_ZN5sm1006decode6head6439flash_fwd_splitkv_mla_fp8_sparse_kernelINS1_14KernelTemplateIL9ModelType0EEENS5_9TmaParamsIN4cute5tupleIJiiiiEEENS7_9TiledCopyINS7_9Copy_AtomIJNS7_11Copy_TraitsINS7_13SM90_TMA_LOADEJNS7_1CILi65536EEENS7_12AuxTmaParamsINS8_IJNS7_11ScaledBasisINSE_ILi1EEEJLi1EEEENSH_ISI_JLi0EEEENSH_ISI_JLi2EEEENSH_ISI_JLi3EEEEEEERKNS7_6LayoutINS8_IJNSE_ILi64EEESP_SI_SI_EEESN_EERKNS7_7SwizzleILi3ELi4ELi3EEEEEEEEN7cutlass10bfloat16_tEEEENSO_INS8_IJSI_NS8_IJNS8_IJNS8_IJSP_SP_EEENSE_ILi8EEEEEEEEEEEENS8_IJNSE_ILi0EEENS8_IJNS8_IJNS8_IJSP_SI_EEENSE_ILi4096EEEEEEEEEEEEEENS8_IJSP_NSE_ILi512EEEEEEEES9_NSA_INSB_IJNSC_INS7_14SM90_TMA_STOREEJSF_SY_EEES11_EEENSO_INS8_IJSI_NS8_IJNS8_IJS13_SI_EEEEEEEEENS8_IJS18_NS8_IJNS8_IJS19_S18_EEEEEEEEEEES13_EEEEEEv22SparseAttnDecodeParamsT0_' for 'sm_100f'
+ptxas info    : Function properties for _ZN5sm1006decode6head6439flash_fwd_splitkv_mla_fp8_sparse_kernelINS1_14KernelTemplateIL9ModelType0EEENS5_9TmaParamsIN4cute5tupleIJiiiiEEENS7_9TiledCopyINS7_9Copy_AtomIJNS7_11Copy_TraitsINS7_13SM90_TMA_LOADEJNS7_1CILi65536EEENS7_12AuxTmaParamsINS8_IJNS7_11ScaledBasisINSE_ILi1EEEJLi1EEEENSH_ISI_JLi0EEEENSH_ISI_JLi2EEEENSH_ISI_JLi3EEEEEEERKNS7_6LayoutINS8_IJNSE_ILi64EEESP_SI_SI_EEESN_EERKNS7_7SwizzleILi3ELi4ELi3EEEEEEEEN7cutlass10bfloat16_tEEEENSO_INS8_IJSI_NS8_IJNS8_IJNS8_IJSP_SP_EEENSE_ILi8EEEEEEEEEEEENS8_IJNSE_ILi0EEENS8_IJNS8_IJNS8_IJSP_SI_EEENSE_ILi4096EEEEEEEEEEEEEENS8_IJSP_NSE_ILi512EEEEEEEES9_NSA_INSB_IJNSC_INS7_14SM90_TMA_STOREEJSF_SY_EEES11_EEENSO_INS8_IJSI_NS8_IJNS8_IJS13_SI_EEEEEEEEENS8_IJS18_NS8_IJNS8_IJS19_S18_EEEEEEEEEEES13_EEEEEEv22SparseAttnDecodeParamsT0_
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 168 registers, used 16 barriers
+ptxas info    : Compile time = 398.836 ms
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/nn/modules/container/any_module_holder.h(93): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+            module->_forward_populate_default_args(std::move(arguments)));
+            ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/python.h(93): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+    module.attr(name) = wrapper_class;
+    ^
+
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/python.h(155): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+                module.to(
+                ^
+
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/python.h(159): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+                module.to(detail::py_object_to_dtype(object), non_blocking);
+                ^
+
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/python.h(170): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+                  module.to(detail::py_object_to_dtype(dtype), non_blocking);
+                  ^
+
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/python.h(172): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+                  module.to(detail::py_object_to_device(device), non_blocking);
+                  ^
+
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/python.h(174): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+                  module.to(
+                  ^
+
+/home/chenpengfei/FlashMLA/csrc/cutlass/include/cutlass/gemm/collective/sm100_blockscaled_mma_array_warpspecialized_rcggemm.hpp(694): warning #2908-D: the implicit by-copy capture of "this" is deprecated
+          Tensor mSFB_tmp = observed_tma_load_sfb_->get_tma_tensor(shape(layout_SFB));
+                            ^
+
+/home/chenpengfei/FlashMLA/csrc/cutlass/include/cutlass/gemm/collective/sm100_blockscaled_sparse_mma_warpspecialized.hpp(902): warning #2908-D: the implicit by-copy capture of "this" is deprecated
+          Tensor mSFB_tmp = observed_tma_load_sfb_->get_tma_tensor(shape(layout_SFB_));
+                            ^
+
+/home/chenpengfei/FlashMLA/csrc/cutlass/include/cutlass/gemm/collective/sm100_blockscaled_mma_warpspecialized.hpp(717): warning #2908-D: the implicit by-copy capture of "this" is deprecated
+          Tensor mSFB_tmp = observed_tma_load_sfb_->get_tma_tensor(shape(layout_SFB_));
+                            ^
+
+/home/chenpengfei/FlashMLA/csrc/cutlass/include/cutlass/gemm/collective/sm100_blockscaled_mma_array_warpspecialized.hpp(727): warning #2908-D: the implicit by-copy capture of "this" is deprecated
+          Tensor mSFB_tmp = observed_tma_load_sfb_->get_tma_tensor(shape(layout_SFB));
+                            ^
+
+/home/chenpengfei/FlashMLA/csrc/cutlass/include/cutlass/gemm/collective/sm100_blockscaled_mma_mixed_tma_cpasync_warpspecialized.hpp(541): warning #2908-D: the implicit by-copy capture of "this" is deprecated
+          Tensor mSFB_tmp = observed_tma_load_sfb_->get_tma_tensor(shape(layout_SFB_));
+                            ^
+
+/home/chenpengfei/FlashMLA/csrc/cutlass/include/cutlass/gemm/collective/sm103_blockscaled_mma_warpspecialized.hpp(682): warning #2908-D: the implicit by-copy capture of "this" is deprecated
+          Tensor mSFB_tmp = observed_tma_load_sfb_->get_tma_tensor(shape(params.layout_SFB));
+                            ^
+
+/home/chenpengfei/FlashMLA/csrc/cutlass/include/cutlass/gemm/collective/sm103_blockscaled_mma_array_warpspecialized.hpp(810): warning #2908-D: the implicit by-copy capture of "this" is deprecated
+          Tensor mSFB_tmp = observed_tma_load_sfb_->get_tma_tensor(shape(layout_SFB));
+                            ^
+
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/nn/modules/container/any_module_holder.h(93): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+            module->_forward_populate_default_args(std::move(arguments)));
+            ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/python.h(93): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+    module.attr(name) = wrapper_class;
+    ^
+
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/python.h(155): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+                module.to(
+                ^
+
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/python.h(159): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+                module.to(detail::py_object_to_dtype(object), non_blocking);
+                ^
+
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/python.h(170): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+                  module.to(detail::py_object_to_dtype(dtype), non_blocking);
+                  ^
+
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/python.h(172): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+                  module.to(detail::py_object_to_device(device), non_blocking);
+                  ^
+
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/python.h(174): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+                  module.to(
+                  ^
+
+ptxas info    : 218111 bytes gmem
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESA_SA_SA_EEENS1_10collective23ResidualMaskForBackwardEEEEEvNT_6ParamsE' for 'sm_90a'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESA_SA_SA_EEENS1_10collective23ResidualMaskForBackwardEEEEEvNT_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 24 registers, used 0 barriers
+ptxas info    : Compile time = 7.663 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENS9_ILi128EEENS9_ILi192EEESB_EEENS1_10collective23ResidualMaskForBackwardEEEEEvNT_6ParamsE' for 'sm_90a'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENS9_ILi128EEENS9_ILi192EEESB_EEENS1_10collective23ResidualMaskForBackwardEEEEEvNT_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 24 registers, used 0 barriers
+ptxas info    : Compile time = 1.933 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESC_SC_SC_EEENS6_23ResidualMaskForBackwardEEEEEvNT_6ParamsE' for 'sm_90a'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESC_SC_SC_EEENS6_23ResidualMaskForBackwardEEEEEvNT_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 24 registers, used 0 barriers
+ptxas info    : Compile time = 1.685 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENSB_ILi128EEENSB_ILi192EEESD_EEENS6_23ResidualMaskForBackwardEEEEEvNT_6ParamsE' for 'sm_90a'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENSB_ILi128EEENSB_ILi192EEESD_EEENS6_23ResidualMaskForBackwardEEEEEvNT_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 24 registers, used 0 barriers
+ptxas info    : Compile time = 1.689 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESA_SA_SA_EEENS1_10collective21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE' for 'sm_90a'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESA_SA_SA_EEENS1_10collective21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 24 registers, used 0 barriers
+ptxas info    : Compile time = 1.673 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENS9_ILi128EEENS9_ILi192EEESB_EEENS1_10collective21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE' for 'sm_90a'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENS9_ILi128EEENS9_ILi192EEESB_EEENS1_10collective21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 24 registers, used 0 barriers
+ptxas info    : Compile time = 1.682 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel20FmhaKernelBwdConvertIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfEEEEvNT_6ParamsE' for 'sm_90a'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel20FmhaKernelBwdConvertIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfEEEEvNT_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 24 registers, used 0 barriers
+ptxas info    : Compile time = 1.686 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel19FmhaKernelBwdSumOdOIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfEEEEvNT_6ParamsE' for 'sm_90a'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel19FmhaKernelBwdSumOdOIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfEEEEvNT_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 24 registers, used 0 barriers
+ptxas info    : Compile time = 1.692 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESC_SC_SC_EEENS6_21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE' for 'sm_90a'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESC_SC_SC_EEENS6_21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 24 registers, used 0 barriers
+ptxas info    : Compile time = 1.685 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENSB_ILi128EEENSB_ILi192EEESD_EEENS6_21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE' for 'sm_90a'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENSB_ILi128EEENSB_ILi192EEESD_EEENS6_21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 24 registers, used 0 barriers
+ptxas info    : Compile time = 1.688 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel20FmhaKernelBwdConvertIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfEEEEvNT_6ParamsE' for 'sm_90a'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel20FmhaKernelBwdConvertIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfEEEEvNT_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 24 registers, used 0 barriers
+ptxas info    : Compile time = 1.719 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel19FmhaKernelBwdSumOdOIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfEEEEvNT_6ParamsE' for 'sm_90a'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel19FmhaKernelBwdSumOdOIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfEEEEvNT_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 24 registers, used 0 barriers
+ptxas info    : Compile time = 1.685 ms
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/nn/modules/container/any_module_holder.h(93): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+            module->_forward_populate_default_args(std::move(arguments)));
+            ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/python.h(93): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+    module.attr(name) = wrapper_class;
+    ^
+
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/python.h(155): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+                module.to(
+                ^
+
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/python.h(159): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+                module.to(detail::py_object_to_dtype(object), non_blocking);
+                ^
+
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/python.h(170): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+                  module.to(detail::py_object_to_dtype(dtype), non_blocking);
+                  ^
+
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/python.h(172): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+                  module.to(detail::py_object_to_device(device), non_blocking);
+                  ^
+
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/python.h(174): warning #3189-D: "module" is parsed as an identifier rather than a keyword because the tokens that follow it do not match those of a preprocessor directive
+                  module.to(
+                  ^
+
+ptxas warning : Local memory used for function '_ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESA_SA_SA_EEENS1_10collective23ResidualMaskForBackwardEEEEEvNT_6ParamsE', size of stack frame: 48 bytes
+ptxas warning : Registers are spilled to local memory in function '_ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESA_SA_SA_EEENS1_10collective23ResidualMaskForBackwardEEEEEvNT_6ParamsE', 56 bytes spill stores, 56 bytes spill loads
+ptxas warning : Local memory used for function '_ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESC_SC_SC_EEENS6_23ResidualMaskForBackwardEEEEEvNT_6ParamsE', size of stack frame: 32 bytes
+ptxas warning : Registers are spilled to local memory in function '_ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESC_SC_SC_EEENS6_23ResidualMaskForBackwardEEEEEvNT_6ParamsE', 48 bytes spill stores, 32 bytes spill loads
+ptxas warning : Local memory used for function '_ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESA_SA_SA_EEENS1_10collective21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE', size of stack frame: 48 bytes
+ptxas warning : Registers are spilled to local memory in function '_ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESA_SA_SA_EEENS1_10collective21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE', 64 bytes spill stores, 48 bytes spill loads
+ptxas warning : Local memory used for function '_ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENS9_ILi128EEENS9_ILi192EEESB_EEENS1_10collective21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE', size of stack frame: 8 bytes
+ptxas warning : Registers are spilled to local memory in function '_ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENS9_ILi128EEENS9_ILi192EEESB_EEENS1_10collective21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE', 12 bytes spill stores, 16 bytes spill loads
+ptxas warning : Local memory used for function '_ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESC_SC_SC_EEENS6_21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE', size of stack frame: 64 bytes
+ptxas warning : Registers are spilled to local memory in function '_ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESC_SC_SC_EEENS6_21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE', 108 bytes spill stores, 112 bytes spill loads
+ptxas warning : Local memory used for function '_ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENSB_ILi128EEENSB_ILi192EEESD_EEENS6_21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE', size of stack frame: 8 bytes
+ptxas warning : Registers are spilled to local memory in function '_ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENSB_ILi128EEENSB_ILi192EEESD_EEENS6_21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE', 12 bytes spill stores, 16 bytes spill loads
+ptxas info    : 218078 bytes gmem
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESA_SA_SA_EEENS1_10collective23ResidualMaskForBackwardEEEEEvNT_6ParamsE' for 'sm_100f'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESA_SA_SA_EEENS1_10collective23ResidualMaskForBackwardEEEEEvNT_6ParamsE
+    48 bytes stack frame, 56 bytes spill stores, 56 bytes spill loads
+ptxas info    : Used 128 registers, used 4 barriers, 48 bytes cumulative stack size
+ptxas info    : Compile time = 458.408 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENS9_ILi128EEENS9_ILi192EEESB_EEENS1_10collective23ResidualMaskForBackwardEEEEEvNT_6ParamsE' for 'sm_100f'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENS9_ILi128EEENS9_ILi192EEESB_EEENS1_10collective23ResidualMaskForBackwardEEEEEvNT_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 128 registers, used 4 barriers
+ptxas info    : Compile time = 282.051 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESC_SC_SC_EEENS6_23ResidualMaskForBackwardEEEEEvNT_6ParamsE' for 'sm_100f'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESC_SC_SC_EEENS6_23ResidualMaskForBackwardEEEEEvNT_6ParamsE
+    32 bytes stack frame, 48 bytes spill stores, 32 bytes spill loads
+ptxas info    : Used 128 registers, used 4 barriers, 32 bytes cumulative stack size
+ptxas info    : Compile time = 390.919 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENSB_ILi128EEENSB_ILi192EEESD_EEENS6_23ResidualMaskForBackwardEEEEEvNT_6ParamsE' for 'sm_100f'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENSB_ILi128EEENSB_ILi192EEESD_EEENS6_23ResidualMaskForBackwardEEEEEvNT_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 128 registers, used 4 barriers
+ptxas info    : Compile time = 282.064 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESA_SA_SA_EEENS1_10collective21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE' for 'sm_100f'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESA_SA_SA_EEENS1_10collective21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE
+    48 bytes stack frame, 64 bytes spill stores, 48 bytes spill loads
+ptxas info    : Used 128 registers, used 4 barriers, 48 bytes cumulative stack size
+ptxas info    : Compile time = 419.219 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENS9_ILi128EEENS9_ILi192EEESB_EEENS1_10collective21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE' for 'sm_100f'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENS9_ILi128EEENS9_ILi192EEESB_EEENS1_10collective21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE
+    8 bytes stack frame, 12 bytes spill stores, 16 bytes spill loads
+ptxas info    : Used 128 registers, used 4 barriers, 8 bytes cumulative stack size
+ptxas info    : Compile time = 301.241 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel20FmhaKernelBwdConvertIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfEEEEvNT_6ParamsE' for 'sm_100f'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel20FmhaKernelBwdConvertIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfEEEEvNT_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 24 registers, used 0 barriers
+ptxas info    : Compile time = 17.170 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel19FmhaKernelBwdSumOdOIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfEEEEvNT_6ParamsE' for 'sm_100f'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel19FmhaKernelBwdSumOdOIN4cute5tupleIJiiiiNS5_IJiiEEEEEENS_10bfloat16_tEfEEEEvNT_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 32 registers, used 0 barriers
+ptxas info    : Compile time = 9.102 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESC_SC_SC_EEENS6_21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE' for 'sm_100f'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel36Sm100FmhaBwdKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi128EEESC_SC_SC_EEENS6_21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE
+    64 bytes stack frame, 108 bytes spill stores, 112 bytes spill loads
+ptxas info    : Used 128 registers, used 4 barriers, 64 bytes cumulative stack size
+ptxas info    : Compile time = 420.532 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENSB_ILi128EEENSB_ILi192EEESD_EEENS6_21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE' for 'sm_100f'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel39Sm100FmhaBwdMlaKernelTmaWarpSpecializedIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfNS5_IJNS4_1CILi64EEENSB_ILi128EEENSB_ILi192EEESD_EEENS6_21CausalForBackwardMaskILb0EEEEEEEvNT_6ParamsE
+    8 bytes stack frame, 12 bytes spill stores, 16 bytes spill loads
+ptxas info    : Used 128 registers, used 4 barriers, 8 bytes cumulative stack size
+ptxas info    : Compile time = 289.507 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel20FmhaKernelBwdConvertIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfEEEEvNT_6ParamsE' for 'sm_100f'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel20FmhaKernelBwdConvertIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfEEEEvNT_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 28 registers, used 0 barriers
+ptxas info    : Compile time = 18.131 ms
+ptxas info    : Compiling entry function '_ZN7cutlass13device_kernelINS_4fmha6kernel19FmhaKernelBwdSumOdOIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfEEEEvNT_6ParamsE' for 'sm_100f'
+ptxas info    : Function properties for _ZN7cutlass13device_kernelINS_4fmha6kernel19FmhaKernelBwdSumOdOIN4cute5tupleIJNS1_10collective14VariableLengthES7_iiNS5_IJiiEEEEEENS_10bfloat16_tEfEEEEvNT_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 36 registers, used 0 barriers
+ptxas info    : Compile time = 9.598 ms
+slurmstepd-node02: error: *** JOB 5945 ON node02 CANCELLED AT 2026-09-09T09:00:10 ***

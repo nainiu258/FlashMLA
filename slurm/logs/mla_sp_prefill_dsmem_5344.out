@@ -1,0 +1,7 @@
+host=node02 job=5344 gpu=0
+using build artifact: flash_mla/cuda.cpython-312-x86_64-linux-gnu.so
+benchmark: s_q=128 s_kv=65536 topk=2048
+case: s_q=128 s_kv=65536 topk=2048
+direct global-KV requests:    576.000 MiB
+crossover global-KV requests: 288.000 MiB
+crossover DSMEM exchange:     288.000 MiB

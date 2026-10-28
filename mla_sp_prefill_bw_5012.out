@@ -1,0 +1,5 @@
+host=node02 job=5012 gpu=0
+case: s_q=4096 s_kv=32768 topk=2048 h_q=128 d_qk=576
+==PROF== Connected to process 2807639 (/usr/bin/python3.12)
+==PROF== Disconnected from process 2807639
+==ERROR== The application returned an error code (1).

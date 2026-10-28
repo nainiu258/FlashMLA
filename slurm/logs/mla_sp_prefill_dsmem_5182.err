@@ -1,0 +1,1 @@
+ERROR: expected Slurm to bind physical GPU 1, got CUDA_VISIBLE_DEVICES=0

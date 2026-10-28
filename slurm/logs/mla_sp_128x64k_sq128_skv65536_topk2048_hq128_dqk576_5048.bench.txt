@@ -1,0 +1,18 @@
+Profile case: s_q=128, s_kv=65536, topk=2048, h_q=128, d_qk=576
+Expected request-volume model (GiB; cache misses are not assumed):
+  producer indices=0.002
+  producer KV gather=0.562
+  Q TMA read=0.018
+  epilogue O write=0.016
+  epilogue max/lse write=0.000
+  total requested=0.598
+  Note: QK / softmax / PV are fused and overlap with gather; their separate bandwidth cannot be obtained by dividing total kernel time into additive phases.
+CUDA-event mean kernel time: 0.155 ms (100 launches)
+Effective request bandwidth (stage bytes / whole fused-kernel time):
+  producer indices: 13.53 GB/s
+  producer KV gather: 3896.90 GB/s
+  Q TMA read: 121.78 GB/s
+  epilogue O write: 108.25 GB/s
+  epilogue max/lse write: 0.85 GB/s
+  total requested: 4141.30 GB/s
+  These rates overlap in time; do not sum them or interpret them as independent DRAM/L2 bandwidth measurements.

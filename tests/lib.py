@@ -307,13 +307,19 @@ def generate_testcase_for_decode(t: TestParam) -> TestcaseForDecode:
     return TestcaseForDecode(t, q, attn_sink, sm_scale, kv_scope0, kv_scope1)
 
 
-def run_flash_mla_sparse_fwd(p: TestParam, t: Testcase, return_p_sum: bool):
+def run_flash_mla_sparse_fwd(
+    p: TestParam,
+    t: Testcase,
+    return_p_sum: bool,
+    consumer_barrier_wait_cycles: Optional[torch.Tensor] = None,
+):
     assert not return_p_sum
     return flash_mla.flash_mla_sparse_fwd(
         t.q, t.kv, t.indices,
         sm_scale=t.sm_scale,
         attn_sink=t.attn_sink,
-        topk_length=t.topk_length
+        topk_length=t.topk_length,
+        consumer_barrier_wait_cycles=consumer_barrier_wait_cycles,
     )
 
 def run_flash_mla_decode(p: TestParam, t: TestcaseForDecode, tile_scheduler_metadata, num_splits):

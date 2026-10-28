@@ -1,0 +1,6 @@
+host=node02 job=5476 gpu=0
+build: SM90 BF16 sparse prefill, FLASH_MLA_TRACE_PERFETTO=1 (mode=incremental)
+Compiling using NVCC 13.0
+running build_ext
+copying build/lib.linux-x86_64-cpython-312/flash_mla/cuda.cpython-312-x86_64-linux-gnu.so -> flash_mla
+build artifact: flash_mla/cuda.cpython-312-x86_64-linux-gnu.so

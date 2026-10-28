@@ -1,0 +1,54 @@
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/utils/_device.py:122: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/python_variable_indexing.cpp:349.)
+  return func(*args, **kwargs)
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/utils/_device.py:122: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/python_variable_indexing.cpp:349.)
+  return func(*args, **kwargs)
+USDT:2026-08-19 11:04:27 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:28 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:28 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:28 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+/home/chenpengfei/FlashMLA/.venv/lib/python3.12/site-packages/torch/utils/_device.py:122: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/python_variable_indexing.cpp:349.)
+  return func(*args, **kwargs)
+USDT:2026-08-19 11:04:28 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:28 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:28 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:28 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:28 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:29 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:29 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:29 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:29 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:29 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:29 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:29 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:29 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:29 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:29 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:29 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:29 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:30 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:30 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:30 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:30 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:30 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:30 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:30 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:30 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:30 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:30 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:30 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:31 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:31 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:31 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:31 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:31 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:31 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:31 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:31 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:31 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:31 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:31 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:31 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:32 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:32 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-08-19 11:04:32 506761:506761 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-08-19 11:04:32 506761:506761 SyncActivityProfilerHandler.cpp:59] profiler_stop

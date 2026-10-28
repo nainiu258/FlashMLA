@@ -181,6 +181,7 @@ def flash_mla_sparse_fwd(
     d_v: int = 512,
     attn_sink: Optional[torch.Tensor] = None,
     topk_length: Optional[torch.Tensor] = None,
+    consumer_barrier_wait_cycles: Optional[torch.Tensor] = None,
 ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
     """
     Sparse attention prefill kernel
@@ -197,6 +198,9 @@ def flash_mla_sparse_fwd(
             This argument has no effect on lse and max_logits.
         topk_length: optional, [s_q], int32. If provided, the i-th q token will only attend to k tokens specified by indices[i, :, :topk_length[i]], ignoring later k/v tokens (even if provided in indices).
             In extremely rare cases (topk_length provided, there is a valid topk index between topk_length[i] ~ s_kv, and that topk index points to a k token containing NaN), operator output will contain NaN, so please avoid this situation.
+        consumer_barrier_wait_cycles: profiling-only int64 output of shape
+            [s_q * h_q / 64, topk / 128, 4, 4]. Requires a build with
+            FLASH_MLA_PROFILE_CONSUMER_BARRIER_WAIT=1.
 
     Returns:
         (output, max_logits, lse)
@@ -205,9 +209,17 @@ def flash_mla_sparse_fwd(
         - max_logits:  [s_q, h_q], float
         - lse: [s_q, h_q], float, log-sum-exp of attention scores
     """
-    results = flash_mla_cuda.sparse_prefill_fwd(
-        q, kv, indices, sm_scale, d_v, attn_sink, topk_length
-    )
+    # Keep the regular path compatible with an already-built extension.  The
+    # optional eighth argument exists only in the clock64 profiling build.
+    if consumer_barrier_wait_cycles is None:
+        results = flash_mla_cuda.sparse_prefill_fwd(
+            q, kv, indices, sm_scale, d_v, attn_sink, topk_length
+        )
+    else:
+        results = flash_mla_cuda.sparse_prefill_fwd(
+            q, kv, indices, sm_scale, d_v, attn_sink, topk_length,
+            consumer_barrier_wait_cycles
+        )
     return results
 
 

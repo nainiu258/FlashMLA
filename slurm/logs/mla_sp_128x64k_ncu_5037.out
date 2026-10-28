@@ -1,0 +1,3 @@
+host=node02 job=5037 gpu=0
+case: s_q=128 s_kv=65536 topk=2048 h_q=128 d_qk=576
+requested-byte model excludes L2 reuse; compare it with NCU DRAM counters.

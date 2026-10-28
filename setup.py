@@ -20,6 +20,8 @@ def get_features_args():
     features_args = []
     if is_flag_set("FLASH_MLA_DISABLE_FP16"):
         features_args.append("-DFLASH_MLA_DISABLE_FP16")
+    if is_flag_set("FLASH_MLA_PROFILE_CONSUMER_BARRIER_WAIT"):
+        features_args.append("-DFLASH_MLA_PROFILE_CONSUMER_BARRIER_WAIT")
     return features_args
 
 def get_arch_flags():
@@ -120,8 +122,8 @@ ext_modules.append(
                 "--use_fast_math",
                 "--ptxas-options=-v,--register-usage-level=10,--warn-on-spills,--warn-on-local-memory-usage,--warn-on-double-precision-use",
                 "-lineinfo",
-                "--source-in-ptx",
-            ] + get_features_args() + get_arch_flags() + get_nvcc_thread_args(),
+            ] + ([] if is_flag_set("FLASH_MLA_DISABLE_SOURCE_IN_PTX") else ["--source-in-ptx"])
+              + get_features_args() + get_arch_flags() + get_nvcc_thread_args(),
         },
         include_dirs=[
             Path(this_dir) / "csrc",
